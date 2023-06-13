@@ -1,7 +1,7 @@
 PLS 801 Lab 6: Functional Programming & A Calculus Application
 ================
 Constanza F. Schibber
-October 12, 2018
+10/12/2018
 
 # Agenda for Today:
 
@@ -105,51 +105,14 @@ y.full<- sapply(x, FUN=first.fun.full)
     ## for x equal to 10 the value of y is 21
 
 ``` r
-y.full
-```
-
-    ## [[1]]
-    ## NULL
-    ## 
-    ## [[2]]
-    ## NULL
-    ## 
-    ## [[3]]
-    ## NULL
-    ## 
-    ## [[4]]
-    ## NULL
-    ## 
-    ## [[5]]
-    ## NULL
-    ## 
-    ## [[6]]
-    ## NULL
-    ## 
-    ## [[7]]
-    ## NULL
-    ## 
-    ## [[8]]
-    ## NULL
-    ## 
-    ## [[9]]
-    ## NULL
-    ## 
-    ## [[10]]
-    ## NULL
-    ## 
-    ## [[11]]
-    ## NULL
-
-``` r
 is.vector(y.full)
 ```
 
     ## [1] TRUE
 
-``` r
-# y.full is still a vector but because of the text, it is not useful in terms of doing other calculations. But, depending on what you are doing, it is useful to have text or even include warnings in your output.
-```
+`y.full` is still a vector but because of the text, it is not useful in
+terms of doing other calculations. But, depending on what you are doing,
+it is useful to have text or even include warnings in your output.
 
 We can plot this `function`!
 
@@ -506,7 +469,7 @@ q1.fun   # recall the function
     ##   y <- (x+1)^2 + x^(-1/2)
     ##   return(y)
     ## }
-    ## <bytecode: 0x7fcc814b7030>
+    ## <bytecode: 0x7f986facf7f0>
 
 ``` r
 q1.fun.if <- function(x){
@@ -535,8 +498,11 @@ q1.fun.if(x=10)
 We can also use `ifelse` to override ’s natural inclinations. See the
 following example.
 
+Draw ten random numbers from a normal distribution where the mean is 2
+and the standard deviation is 4. “set.seed” function is to make the
+following random draw replicable.
+
 ``` r
-## Draw ten random numbers from a normal distribution where the mean is 2 and the standard deviation is 4. "set.seed" function is to make the following random draw replicable. 
 set.seed(54321008)
 y <- rnorm(10, mean=2, sd=4)
 y
@@ -545,8 +511,12 @@ y
     ##  [1] -0.6218419 -0.4143119  1.0271678  2.0353725  2.9061868  0.6974074
     ##  [7]  1.6044344 -3.5311969  2.3495817  8.1371745
 
+If we take logarithms of `y`, it shows “NaN” (meaning Not a Number) for
+the log of negative numbers. However, if we want the log of negative
+numbers to be represented by “NA,” we can override as following:
+
 ``` r
-## If we take logarithms of y, it shows "NaN" (meaning Not a Number) for the log of negative numbers.
+## log
 ylog <- log(y)
 ```
 
@@ -560,7 +530,7 @@ ylog
     ##  [7]  0.47277128         NaN  0.85423730  2.09644301
 
 ``` r
-## However, if we want the log of negative numbers to be represented by "NA," we can override as following:
+## override as following:
 ylog <- ifelse(y<0, NA, log(y))
 ```
 
@@ -743,7 +713,7 @@ factorial(100000)
 
 where the result says it is `Inf` which is R talk for `infinity`. But we
 know we can compute that! What happened? You will learn about this in
-the reading for Lab 7 (so do the reading).
+the reading for Lab 7 (so do the reading!).
 
 ## Simulation using loops
 
