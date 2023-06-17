@@ -3,16 +3,18 @@ PLS 801 Lab 7: Optimization
 Constanza F. Schibber
 October 19, 2017
 
-# Agenda
+- [Package `gsl`](#package-gsl)
+- [Computer Representation of Real
+  Numbers](#computer-representation-of-real-numbers)
+- [Reimann Zeta Function](#reimann-zeta-function)
+- [Optimization](#optimization)
+  - [`mle`](#mle)
+  - [`optimize` in $\mathcal{R}^1$](#optimize-in-mathcalr1)
+  - [`optim` in $\mathcal{R}^2$](#optim-in-mathcalr2)
+  - [Starter example](#starter-example)
+- [Gamma Example (11.2, 11.4)](#gamma-example-112-114)
 
-1- Computer representation of real numbers  
-2- Reimann Zeta Function  
-3- Optimization  
-- `mle`  
-- `optimize` in one dimension  
-- `optim` in two dimensions
-
-## Package `gsl`
+# Package `gsl`
 
 You will need the package `gsl` (an R wrapper for the special functions
 and quasi random number generators of the Gnu Scientific Library).
