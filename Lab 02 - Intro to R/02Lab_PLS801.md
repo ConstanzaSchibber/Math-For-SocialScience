@@ -3,6 +3,16 @@ Lab 2: Reading and Visualizing Data
 Constanza F. Schibber
 9/7/2017
 
+- [Reading Data: The Basics](#reading-data-the-basics)
+- [A Working Example](#a-working-example)
+  - [Logical Statements and Variable
+    Generation](#logical-statements-and-variable-generation)
+  - [Cleaning Data](#cleaning-data)
+  - [Visualizing Data](#visualizing-data)
+    - [The `plot` Function](#the-plot-function)
+    - [Layering plots](#layering-plots)
+  - [Practice Problem](#practice-problem)
+
 # Reading Data: The Basics
 
 There are a lot of files types. To read datasets, we have to use the
