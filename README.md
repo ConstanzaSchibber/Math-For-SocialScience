@@ -16,7 +16,7 @@ Table of Contents
 
 [Integrals](https://github.com/ConstanzaSchibber/Math-For-SocialScience/blob/main/Lab%2005%20-%20Calculus/Lecture_IntegralsinR.md)
 
-[Newton Raphson Method](https://github.com/ConstanzaSchibber/Math-For-SocialScience/blob/main/Lab%2006%20-%20Newton%20Raphson%20Method/Lab6-MultivariateCalculus.md)
+[Newton Raphson Method](https://github.com/ConstanzaSchibber/Math-For-SocialScience/blob/main/Lab%2006%20-%20Newton%20Raphson%20Method/NewtonRaphson.md)
 
 [Optimization](https://github.com/ConstanzaSchibber/Math-For-SocialScience/blob/main/Lab%2007%20-%20Optimization/Lab7_optimization.md)
 
