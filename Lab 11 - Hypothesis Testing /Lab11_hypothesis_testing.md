@@ -3,13 +3,31 @@ Lab 12: Hypothesis Testing
 Constanza F. Schibber
 December 7, 2017
 
-# Today’s Agenda
-
-1.  Working Example
-2.  Hypothesis Tests for Means: A One-Sided Test  
-3.  Hypothesis Tests for Means: A Two-Sided Test
-4.  Two-Sample t-Tests
-5.  Practice
+- [1. Working Example: LaLonde’s(1986)
+  data](#1-working-example-lalondes1986-data)
+- [2. Hypothesis Tests for Means: A One-Sided
+  Test](#2-hypothesis-tests-for-means-a-one-sided-test)
+  - [Example 1. One sided Test.](#example-1-one-sided-test)
+    - [t-Test Step by Step](#t-test-step-by-step)
+  - [`t.test`](#ttest)
+  - [Example 2. One sided Test.](#example-2-one-sided-test)
+  - [t-Test Step by Step](#t-test-step-by-step-1)
+  - [`t.test`](#ttest-1)
+- [Two-Sample Difference of Means Test, Independent
+  Samples](#two-sample-difference-of-means-test-independent-samples)
+  - [t-Test Step by Step](#t-test-step-by-step-2)
+  - [`t.test`](#ttest-2)
+- [Practice Exercises](#practice-exercises)
+  - [Exercise 1](#exercise-1)
+  - [Exercise 2: DeGroot](#exercise-2-degroot)
+- [Exercise 3: Obama Feeling
+  Thermometer](#exercise-3-obama-feeling-thermometer)
+  - [Obama Feeling Thermometer: One sided t-Test
+    (1)](#obama-feeling-thermometer-one-sided-t-test-1)
+  - [Obama Feeling Thermometer: One sided t-Test
+    (2)](#obama-feeling-thermometer-one-sided-t-test-2)
+  - [Obama Feeling Thermometer: Two sided
+    t-Test](#obama-feeling-thermometer-two-sided-t-test)
 
 # 1. Working Example: LaLonde’s(1986) data
 

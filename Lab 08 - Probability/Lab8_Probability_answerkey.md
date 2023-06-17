@@ -3,10 +3,28 @@ Lab 8: Probability
 Constanza F. Schibber
 November 2, 2017
 
-# Agenda
-
-1.  A die and a weighted die
-2.  A deck of playing cards
+- [Rolling Dice](#rolling-dice)
+  - [Rolling a Die](#rolling-a-die)
+    - [Rolling a die 10, 100, and 100,000
+      times](#rolling-a-die-10-100-and-100000-times)
+  - [Rolling Two Dice](#rolling-two-dice)
+  - [Rolling 2 dice 100,000 times](#rolling-2-dice-100000-times)
+    - [How many 1-1 rolls do we have in
+      rolls?](#how-many-1-1-rolls-do-we-have-in-rolls)
+    - [How many 1-2 and 2-1 rolls do we have in
+      rolls?](#how-many-1-2-and-2-1-rolls-do-we-have-in-rolls)
+    - [How many combinations of 1, 3, 5 do we have in
+      rolls?](#how-many-combinations-of-1-3-5-do-we-have-in-rolls)
+  - [Rolling dice and looking at the
+    sum](#rolling-dice-and-looking-at-the-sum)
+- [A Curious Coin-Flipping Game](#a-curious-coin-flipping-game)
+- [A Deck of 52 cards](#a-deck-of-52-cards)
+  - [What is the probability of picking the card, Queen of
+    Hearts?](#what-is-the-probability-of-picking-the-card-queen-of-hearts)
+  - [What is the probability of picking a
+    Queen?](#what-is-the-probability-of-picking-a-queen)
+  - [What is the probability of picking a Queen in 5 consecutive
+    cards?](#what-is-the-probability-of-picking-a-queen-in-5-consecutive-cards)
 
 # Rolling Dice
 
@@ -40,14 +58,14 @@ sum(die)
 sample(x = die, size = 1)
 ```
 
-    ## [1] 5
+    ## [1] 6
 
 ``` r
 #Let's roll again a die once. Do you get the same result?
 sample(x = die, size = 1)
 ```
 
-    ## [1] 2
+    ## [1] 3
 
 ``` r
 #We can write a function for rolling a die 
@@ -60,7 +78,7 @@ roll1 <- function ( ) {
 roll1() # what did you get when you rolled a die?
 ```
 
-    ## [1] 3
+    ## [1] 1
 
 ``` r
 roll1() # what did you get this time?
@@ -74,6 +92,8 @@ $\frac{1}{6}=0.1666667$
 What happens if you run several experiments by rolling a die a number of
 times?
 
+### Rolling a die 10, 100, and 100,000 times
+
 ``` r
 ### Rolling a die 10 times ###
 
@@ -84,7 +104,7 @@ rolls10 <- replicate(10, roll1())
 rolls10
 ```
 
-    ##  [1] 2 4 5 6 2 6 3 4 1 1
+    ##  [1] 2 1 3 5 4 4 2 6 4 2
 
 ``` r
 # we can build a table in which we get the frequency of rolling a 1, a 2, and so on
@@ -93,7 +113,7 @@ table(rolls10)   ##Make a frequency table
 
     ## rolls10
     ## 1 2 3 4 5 6 
-    ## 2 2 1 2 1 2
+    ## 1 3 1 3 1 1
 
 ``` r
 # we can build a histogram in which y-axis is the frequency for rolling each side of the die
@@ -127,7 +147,7 @@ table(rolls100)
 
     ## rolls100
     ##  1  2  3  4  5  6 
-    ## 12 14 21 17 18 18
+    ##  9 18 22 17 18 16
 
 ``` r
 # We can calculate the ``proportions" we go (frequency of rolling each side divided by the number of rolls)
@@ -138,12 +158,12 @@ tb100
 ```
 
     ##   rolls100 Freq
-    ## 1        1   12
-    ## 2        2   14
-    ## 3        3   21
+    ## 1        1    9
+    ## 2        2   18
+    ## 3        3   22
     ## 4        4   17
     ## 5        5   18
-    ## 6        6   18
+    ## 6        6   16
 
 ``` r
 dim(tb100)
@@ -158,12 +178,12 @@ tb100
 ```
 
     ##   rolls100 Freq prop
-    ## 1        1   12 0.12
-    ## 2        2   14 0.14
-    ## 3        3   21 0.21
+    ## 1        1    9 0.09
+    ## 2        2   18 0.18
+    ## 3        3   22 0.22
     ## 4        4   17 0.17
     ## 5        5   18 0.18
-    ## 6        6   18 0.18
+    ## 6        6   16 0.16
 
 ``` r
 ### Rolling a die 100,000 times ###
@@ -175,7 +195,7 @@ rolls100000 <- replicate(100000, roll1())
 head(rolls100000)
 ```
 
-    ## [1] 5 5 5 5 6 5
+    ## [1] 2 5 2 6 6 4
 
 ``` r
 # we can build a table in which we get the frequency of rolling a 1, a 2, and so on
@@ -184,7 +204,7 @@ table(rolls100000)
 
     ## rolls100000
     ##     1     2     3     4     5     6 
-    ## 16631 16723 16714 16582 16696 16654
+    ## 16628 16701 16619 16779 16684 16589
 
 ``` r
 # we can build a barplot in which y-axis is the frequency for rolling each side of the die
@@ -207,12 +227,12 @@ head(tb)
 ```
 
     ##   rolls100000  Freq
-    ## 1           1 16631
-    ## 2           2 16723
-    ## 3           3 16714
-    ## 4           4 16582
-    ## 5           5 16696
-    ## 6           6 16654
+    ## 1           1 16628
+    ## 2           2 16701
+    ## 3           3 16619
+    ## 4           4 16779
+    ## 5           5 16684
+    ## 6           6 16589
 
 ``` r
 tb$prop <- tb[,2]/100000
@@ -220,12 +240,12 @@ tb
 ```
 
     ##   rolls100000  Freq    prop
-    ## 1           1 16631 0.16631
-    ## 2           2 16723 0.16723
-    ## 3           3 16714 0.16714
-    ## 4           4 16582 0.16582
-    ## 5           5 16696 0.16696
-    ## 6           6 16654 0.16654
+    ## 1           1 16628 0.16628
+    ## 2           2 16701 0.16701
+    ## 3           3 16619 0.16619
+    ## 4           4 16779 0.16779
+    ## 5           5 16684 0.16684
+    ## 6           6 16589 0.16589
 
 ## Rolling Two Dice
 
@@ -242,14 +262,14 @@ dice <- sample(x = die, size = 2, replace=TRUE)
 dice
 ```
 
-    ## [1] 6 6
+    ## [1] 3 2
 
 ``` r
 #What is the sum of the numbers you get?
 sum(dice)
 ```
 
-    ## [1] 12
+    ## [1] 5
 
 ``` r
 # Writing a generic function for rolling x number of dice
@@ -263,7 +283,7 @@ rollx <- function(x) {
 rollx(2)
 ```
 
-    ## [1] 3 1
+    ## [1] 4 5
 
 Calculate the following probabilities by hand:
 
@@ -278,6 +298,8 @@ Tip: Because the output of `rollx` is a vector, when using `replicate`
 you are going to run into problems. You will have to use `as.matrix` and
 `t`.
 
+## Rolling 2 dice 100,000 times
+
 ``` r
 # rolling 2 dice 100,000 times
 rolls2 <- as.matrix(t(replicate(100000, rollx(2))))   
@@ -285,17 +307,21 @@ head(rolls2)
 ```
 
     ##      [,1] [,2]
-    ## [1,]    2    5
-    ## [2,]    2    6
-    ## [3,]    2    6
-    ## [4,]    4    4
-    ## [5,]    4    1
-    ## [6,]    4    1
+    ## [1,]    3    5
+    ## [2,]    5    5
+    ## [3,]    6    2
+    ## [4,]    3    3
+    ## [5,]    3    1
+    ## [6,]    2    4
 
 ``` r
 #Save as data frame for easier manipulation
 rolls2<-as.data.frame(rolls2)
+```
 
+### How many 1-1 rolls do we have in rolls?
+
+``` r
 ################
 # rolling 1-1 #
 ###############
@@ -312,26 +338,28 @@ head(rolls2)
 ```
 
     ##   V1 V2 Roll11
-    ## 1  2  5      0
-    ## 2  2  6      0
-    ## 3  2  6      0
-    ## 4  4  4      0
-    ## 5  4  1      0
-    ## 6  4  1      0
+    ## 1  3  5      0
+    ## 2  5  5      0
+    ## 3  6  2      0
+    ## 4  3  3      0
+    ## 5  3  1      0
+    ## 6  2  4      0
 
 ``` r
 # How many 1-1 did we get?
 sum(as.numeric(rolls2$Roll11))
 ```
 
-    ## [1] 2807
+    ## [1] 2722
 
 ``` r
 # What is the proportion of 1-1?
 sum(as.numeric(rolls2$Roll11))/nrow(rolls2)
 ```
 
-    ## [1] 0.02807
+    ## [1] 0.02722
+
+### How many 1-2 and 2-1 rolls do we have in rolls?
 
 ``` r
 ########################
@@ -351,26 +379,28 @@ head(rolls2)
 ```
 
     ##   V1 V2 Roll11 Roll21
-    ## 1  2  5      0      0
-    ## 2  2  6      0      0
-    ## 3  2  6      0      0
-    ## 4  4  4      0      0
-    ## 5  4  1      0      0
-    ## 6  4  1      0      0
+    ## 1  3  5      0      0
+    ## 2  5  5      0      0
+    ## 3  6  2      0      0
+    ## 4  3  3      0      0
+    ## 5  3  1      0      0
+    ## 6  2  4      0      0
 
 ``` r
 # How many 1-2 or 2-1 did we get?
 sum(as.numeric(rolls2$Roll21))
 ```
 
-    ## [1] 5451
+    ## [1] 5533
 
 ``` r
 # What is the proportion of 1-1?
 sum(as.numeric(rolls2$Roll21))/nrow(rolls2)
 ```
 
-    ## [1] 0.05451
+    ## [1] 0.05533
+
+### How many combinations of 1, 3, 5 do we have in rolls?
 
 ``` r
 ###################################
@@ -390,26 +420,26 @@ head(rolls2)
 ```
 
     ##   V1 V2 Roll11 Roll21 Rollprime
-    ## 1  2  5      0      0         0
-    ## 2  2  6      0      0         0
-    ## 3  2  6      0      0         0
-    ## 4  4  4      0      0         0
-    ## 5  4  1      0      0         0
-    ## 6  4  1      0      0         0
+    ## 1  3  5      0      0         1
+    ## 2  5  5      0      0         1
+    ## 3  6  2      0      0         0
+    ## 4  3  3      0      0         1
+    ## 5  3  1      0      0         1
+    ## 6  2  4      0      0         0
 
 ``` r
 # How many prime combinations did we get?
 sum(as.numeric(rolls2$Rollprime))
 ```
 
-    ## [1] 24902
+    ## [1] 24743
 
 ``` r
 # What is the proportion?
 sum(as.numeric(rolls2$Rollprime))/nrow(rolls2)
 ```
 
-    ## [1] 0.24902
+    ## [1] 0.24743
 
 ## Rolling dice and looking at the sum
 
@@ -429,13 +459,13 @@ rollxsum <- function (x) {
 rollxsum(2) # what did you get when you rolled a pair of dice?
 ```
 
-    ## [1] 4
+    ## [1] 6
 
 ``` r
 rollxsum(2) # what did you get this time?
 ```
 
-    ## [1] 10
+    ## [1] 5
 
 ``` r
 #Make a histogram of your results when you repeat rolling a pair of dice for 100,000 times 
@@ -451,7 +481,7 @@ table(rolls4)
 
     ## rolls4
     ##     2     3     4     5     6     7     8     9    10    11    12 
-    ##  2840  5536  8258 11116 13978 16555 13784 11078  8405  5635  2815
+    ##  2814  5503  8165 11226 13982 16672 14042 11005  8243  5594  2754
 
 ``` r
 #We can add proportion for each event
@@ -461,17 +491,17 @@ tb.rolls4
 ```
 
     ##    rolls4  Freq    prop
-    ## 1       2  2840 0.02840
-    ## 2       3  5536 0.05536
-    ## 3       4  8258 0.08258
-    ## 4       5 11116 0.11116
-    ## 5       6 13978 0.13978
-    ## 6       7 16555 0.16555
-    ## 7       8 13784 0.13784
-    ## 8       9 11078 0.11078
-    ## 9      10  8405 0.08405
-    ## 10     11  5635 0.05635
-    ## 11     12  2815 0.02815
+    ## 1       2  2814 0.02814
+    ## 2       3  5503 0.05503
+    ## 3       4  8165 0.08165
+    ## 4       5 11226 0.11226
+    ## 5       6 13982 0.13982
+    ## 6       7 16672 0.16672
+    ## 7       8 14042 0.14042
+    ## 8       9 11005 0.11005
+    ## 9      10  8243 0.08243
+    ## 10     11  5594 0.05594
+    ## 11     12  2754 0.02754
 
 What if we had 3 dice? If we roll 3 dice, we have $6^3=216$ possible
 outcomes. If we sum the outcome, the smallest possible sum would be 3
@@ -493,9 +523,9 @@ table(rolls5)
 
     ## rolls5
     ##      3      4      5      6      7      8      9     10     11     12     13 
-    ##   4650  13887  28034  46180  69702  96775 115559 125394 125088 115446  97299 
+    ##   4576  13854  27805  46280  69009  96911 115973 125199 125275 115697  97143 
     ##     14     15     16     17     18 
-    ##  69517  46097  28008  13760   4604
+    ##  69860  46201  27675  13912   4630
 
 ``` r
 #We can add proportion for each event
@@ -505,28 +535,28 @@ tb.rolls5
 ```
 
     ##    rolls5   Freq     prop
-    ## 1       3   4650 0.004650
-    ## 2       4  13887 0.013887
-    ## 3       5  28034 0.028034
-    ## 4       6  46180 0.046180
-    ## 5       7  69702 0.069702
-    ## 6       8  96775 0.096775
-    ## 7       9 115559 0.115559
-    ## 8      10 125394 0.125394
-    ## 9      11 125088 0.125088
-    ## 10     12 115446 0.115446
-    ## 11     13  97299 0.097299
-    ## 12     14  69517 0.069517
-    ## 13     15  46097 0.046097
-    ## 14     16  28008 0.028008
-    ## 15     17  13760 0.013760
-    ## 16     18   4604 0.004604
+    ## 1       3   4576 0.004576
+    ## 2       4  13854 0.013854
+    ## 3       5  27805 0.027805
+    ## 4       6  46280 0.046280
+    ## 5       7  69009 0.069009
+    ## 6       8  96911 0.096911
+    ## 7       9 115973 0.115973
+    ## 8      10 125199 0.125199
+    ## 9      11 125275 0.125275
+    ## 10     12 115697 0.115697
+    ## 11     13  97143 0.097143
+    ## 12     14  69860 0.069860
+    ## 13     15  46201 0.046201
+    ## 14     16  27675 0.027675
+    ## 15     17  13912 0.013912
+    ## 16     18   4630 0.004630
 
 ``` r
 # we might need to increase the replications because the sum 10 and 11 are very veryclose. But even if you increase to 1,000,000 they get even closer (0.125100 and 0.125459).That is because the probability is the same for both of them. See here: https://www.thoughtco.com/probabilities-for-rolling-three-dice-3126558
 ```
 
-## A Curious Coin-Flipping Game
+# A Curious Coin-Flipping Game
 
 The following challenge was set in the August-September 1941 issue of
 American Mathematical Monthly and was not solved until 1966. That is 25
@@ -600,7 +630,7 @@ coin.game(2,2,2)
 ```
 
     ##      new.l new.m new.n
-    ## [1,]     1     1     4
+    ## [1,]     4     1     1
 
 ``` r
 # Repeat Game
@@ -640,7 +670,7 @@ end_time <- Sys.time()
 end_time - start_time
 ```
 
-    ## Time difference of 11.49769 secs
+    ## Time difference of 11.75844 secs
 
 ``` r
 hist(iter, breaks=30)
@@ -656,9 +686,9 @@ summary(iter)
     ##  Min.   : 3.000  
     ##  1st Qu.: 4.000  
     ##  Median : 6.000  
-    ##  Mean   : 8.013  
+    ##  Mean   : 8.017  
     ##  3rd Qu.:10.000  
-    ##  Max.   :81.000
+    ##  Max.   :67.000
 
 # A Deck of 52 cards
 
@@ -761,9 +791,9 @@ random <- sample(1:52, size = 52)
 random
 ```
 
-    ##  [1] 48 14 41 46 29 42 28 18 47 31 12 27 37 30 25 16 44 40 13 34 15 38  9 35 32
-    ## [26] 52 20 11 23  8  7 43 19  1  5 24  2 33 17 51  6  4 49 45  3 39 10 22 26 21
-    ## [51] 36 50
+    ##  [1] 30 19 28 32 45 33 23 21 10 24 17  7 34 44 38 42 22  6  8  9 52 13 40 35  1
+    ## [26] 26 15 39 43 18 12  3 20 36 41 49 27  5 14 47 29  2 48  4 25 46 37 16 50 31
+    ## [51] 11 51
 
 ``` r
 deck3 <- deck[random,]
@@ -771,58 +801,58 @@ deck3
 ```
 
     ##     face     suit value
-    ## 48  five   hearts     5
-    ## 14  king    clubs    13
-    ## 41 queen   hearts    12
-    ## 46 seven   hearts     7
-    ## 29  jack diamonds    11
-    ## 42  jack   hearts    11
-    ## 28 queen diamonds    12
-    ## 18  nine    clubs     9
-    ## 47   six   hearts     6
-    ## 31  nine diamonds     9
-    ## 12   two   spades     2
-    ## 27  king diamonds    13
-    ## 37 three diamonds     3
     ## 30   ten diamonds    10
-    ## 25   two    clubs     2
-    ## 16  jack    clubs    11
-    ## 44  nine   hearts     9
-    ## 40  king   hearts    13
-    ## 13   ace   spades     1
-    ## 34   six diamonds     6
-    ## 15 queen    clubs    12
-    ## 38   two diamonds     2
-    ## 9   five   spades     5
-    ## 35  five diamonds     5
-    ## 32 eight diamonds     8
-    ## 52   ace   hearts     1
-    ## 20 seven    clubs     7
-    ## 11 three   spades     3
-    ## 23  four    clubs     4
-    ## 8    six   spades     6
-    ## 7  seven   spades     7
-    ## 43   ten   hearts    10
     ## 19 eight    clubs     8
-    ## 1   king   spades    13
-    ## 5   nine   spades     9
-    ## 24 three    clubs     3
-    ## 2  queen   spades    12
-    ## 33 seven diamonds     7
-    ## 17   ten    clubs    10
-    ## 51   two   hearts     2
-    ## 6  eight   spades     8
-    ## 4    ten   spades    10
-    ## 49  four   hearts     4
+    ## 28 queen diamonds    12
+    ## 32 eight diamonds     8
     ## 45 eight   hearts     8
-    ## 3   jack   spades    11
-    ## 39   ace diamonds     1
-    ## 10  four   spades     4
-    ## 22  five    clubs     5
-    ## 26   ace    clubs     1
+    ## 33 seven diamonds     7
+    ## 23  four    clubs     4
     ## 21   six    clubs     6
+    ## 10  four   spades     4
+    ## 24 three    clubs     3
+    ## 17   ten    clubs    10
+    ## 7  seven   spades     7
+    ## 34   six diamonds     6
+    ## 44  nine   hearts     9
+    ## 38   two diamonds     2
+    ## 42  jack   hearts    11
+    ## 22  five    clubs     5
+    ## 6  eight   spades     8
+    ## 8    six   spades     6
+    ## 9   five   spades     5
+    ## 52   ace   hearts     1
+    ## 13   ace   spades     1
+    ## 40  king   hearts    13
+    ## 35  five diamonds     5
+    ## 1   king   spades    13
+    ## 26   ace    clubs     1
+    ## 15 queen    clubs    12
+    ## 39   ace diamonds     1
+    ## 43   ten   hearts    10
+    ## 18  nine    clubs     9
+    ## 12   two   spades     2
+    ## 3   jack   spades    11
+    ## 20 seven    clubs     7
     ## 36  four diamonds     4
+    ## 41 queen   hearts    12
+    ## 49  four   hearts     4
+    ## 27  king diamonds    13
+    ## 5   nine   spades     9
+    ## 14  king    clubs    13
+    ## 47   six   hearts     6
+    ## 29  jack diamonds    11
+    ## 2  queen   spades    12
+    ## 48  five   hearts     5
+    ## 4    ten   spades    10
+    ## 25   two    clubs     2
+    ## 46 seven   hearts     7
+    ## 37 three diamonds     3
+    ## 16  jack    clubs    11
     ## 50 three   hearts     3
+    ## 31  nine diamonds     9
+    ## 11 three   spades     3
+    ## 51   two   hearts     2
 
 ``` r
 # Writing a function to shuffle the cards
@@ -844,15 +874,15 @@ deal(deck4)
 ```
 
     ##     face  suit value
-    ## 20 seven clubs     7
+    ## 15 queen clubs    12
 
 ``` r
 deck5 <- shuffle(deck)
 deal(deck5)
 ```
 
-    ##     face     suit value
-    ## 33 seven diamonds     7
+    ##    face   suit value
+    ## 48 five hearts     5
 
 ``` r
 # We create different objects called deck. If you overwrite the original deck and make a mistake, you would have to reaload the deck
@@ -943,7 +973,7 @@ ex2 <- pick2(deck)
 ex2
 ```
 
-    ## [1] 76531
+    ## [1] 77141
 
 ``` r
 #What is the proportion? I.e, How many times do we get a queen of hearts, out of 10^6 trials
@@ -951,7 +981,7 @@ ex2
 ex2/ (10^6)
 ```
 
-    ## [1] 0.076531
+    ## [1] 0.077141
 
 ``` r
 #Is it similar to the probability of this event? 

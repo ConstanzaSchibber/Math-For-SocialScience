@@ -3,11 +3,14 @@ Lab 10: Random Variables
 Constanza F. Schibber
 November 30, 2019
 
-# Today’s Agenda
-
-1.  Law of Large Numbers
-2.  The Central Limit Theorem and the Sampling Distribution of the Mean
-3.  Sampling Distribution of the Variance of a Normal distribution
+- [Simulation for Law of Large
+  Numbers](#simulation-for-law-of-large-numbers)
+  - [Coin Flip](#coin-flip)
+  - [Fair Die](#fair-die)
+- [The Central Limit Theorem and the Sampling Distribution of the
+  Mean](#the-central-limit-theorem-and-the-sampling-distribution-of-the-mean)
+- [Sampling Distribution of the Variance of a Normal
+  distribution](#sampling-distribution-of-the-variance-of-a-normal-distribution)
 
 # Simulation for Law of Large Numbers
 
