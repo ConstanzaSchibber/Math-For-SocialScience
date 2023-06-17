@@ -3,11 +3,20 @@ PLS 801: Lab 3 - Intro to Matrices and Vectors
 Constanza F. Schibber
 September 14, 2017
 
-# Agenda for Today:
-
-1.  Creating Vectors and Matrices
-2.  Structure of Vectors and Matrices
-3.  Arithmetic and Algebraic Operations
+- [Creating Vectors and Matrices](#creating-vectors-and-matrices)
+  - [Vectors](#vectors)
+  - [Matrices](#matrices)
+    - [Special Matrices](#special-matrices)
+      - [Diagonal matrix](#diagonal-matrix)
+      - [Identity matrix](#identity-matrix)
+      - [J matrix](#j-matrix)
+      - [Triangular matrix](#triangular-matrix)
+- [Structure of Vectors and
+  Matrices](#structure-of-vectors-and-matrices)
+  - [`length` and `dim`](#length-and-dim)
+  - [Inverse](#inverse)
+- [Arithmetic and Algebraic
+  Operations](#arithmetic-and-algebraic-operations)
 
 # Creating Vectors and Matrices
 
@@ -265,9 +274,9 @@ BLANK
 matrix as following:
 $\mathbf{BLANK}=\begin{bmatrix} 2 & 3 & 1 \\3.141593 & 4 & 2 \\NA & 5 & 3 \end{bmatrix}$
 
-## Special Matrices
+### Special Matrices
 
-- Diagonal matrix
+#### Diagonal matrix
 
 E.g.,
 $\mathbf{D}=\begin{bmatrix} 1 & 0 & 0 & 0\\0 & 2 & 0 & 0 \\0 & 0 & 3 & 0 \\0 & 0 & 0 & 4 \end{bmatrix}$
@@ -297,7 +306,7 @@ sum(diag(D))
 
     ## [1] 10
 
-- Identity matrix
+#### Identity matrix
 
 E.g.,
 $\mathbf{I}=\begin{bmatrix} 1 & 0 & 0 & 0 & 0\\0 & 1 & 0 & 0 & 0\\0 & 0 & 1 & 0 & 0\\0 & 0 & 0 & 1 & 0 \\0 & 0 & 0 & 0 & 1 \end{bmatrix}$
@@ -314,7 +323,7 @@ I
     ## [4,]    0    0    0    1    0
     ## [5,]    0    0    0    0    1
 
-- J matrix
+#### J matrix
 
 E.g.,
 $\mathbf{J}=\begin{bmatrix} 1 & 1 & 1 & 1 & 1\\1 & 1 & 1 & 1 & 1\\1 & 1 & 1 & 1 & 1\\1 & 1 & 1 & 1 & 1 \\1 & 1 & 1 & 1 & 1 \end{bmatrix}$
@@ -331,7 +340,7 @@ J
     ## [4,]    1    1    1    1    1
     ## [5,]    1    1    1    1    1
 
-- Triangular matrix
+#### Triangular matrix
 
 E.g., Given a matrix
 $\mathbf{Z} =\begin{bmatrix}1 & 2 & 3 \\4 & 5 & 6 \\7 & 8 & 9 \end{bmatrix}$,
@@ -384,6 +393,8 @@ Z_ut
 
 # Structure of Vectors and Matrices
 
+## `length` and `dim`
+
 As shown above, `length( )` gives the length of a vector, `dim( )` gives
 the dimension of a matrix. The transposition of a matrix is `t( )`. You
 can also ask to calculate important characteristics of a matrix, the
@@ -408,6 +419,8 @@ det(Z)
 ```
 
     ## [1] 6.661338e-16
+
+## Inverse
 
 The inverse of a matrix is calculated using `solve( )`.
 
